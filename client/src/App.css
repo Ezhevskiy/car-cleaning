@@ -1,42 +1,209 @@
-#root {
-  max-width: 1280px;
+/* --- 1. ПЕРЕМЕННЫЕ И БАЗОВЫЕ СТИЛИ --- */
+:root {
+  --bg-dark: #0A0C10;
+  --card-dark: #161920;
+  --accent: #3182CE;
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --border: rgba(255, 255, 255, 0.05);
+  --header-bg: rgba(10, 12, 16, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 0 24px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* --- 2. ОБЩИЕ КОМПОНЕНТЫ (UI KIT) --- */
+.header {
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 1.2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-link {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.nav-link:hover, .nav-link.active {
+  color: var(--accent);
 }
 
-.card {
-  padding: 2em;
+.btn-premium {
+  background: var(--accent);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 4px;
+  border: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.read-the-docs {
-  color: #888;
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(49, 130, 206, 0.3);
+  filter: brightness(1.1);
+}
+
+.btn-premium:disabled {
+  background: #2D3748;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  padding: 0 25px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.card-premium {
+  background: var(--card-dark);
+  padding: 35px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+.input-premium {
+  width: 100%;
+  background: #000;
+  border: 1px solid var(--border);
+  padding: 15px;
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  outline: none;
+  transition: 0.3s;
+  font-family: inherit;
+}
+
+.input-premium:focus {
+  border-color: var(--accent);
+}
+
+/* --- 3. СТИЛИ СТРАНИЦЫ HOME --- */
+.home-section { padding: 100px 0; }
+.hero-title { font-size: 4.5rem; font-weight: 900; letter-spacing: -2px; line-height: 1; margin-bottom: 30px; }
+.accent-text { color: var(--accent); }
+.hero-description { color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 40px; max-width: 700px; }
+.home-actions { display: flex; gap: 20px; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 100px; }
+.accent-icon { color: var(--accent); margin-bottom: 15px; }
+
+/* --- 4. СТИЛИ СТРАНИЦЫ BOOKING --- */
+.form-section { padding: 60px 0; }
+.booking-form { max-width: 500px; margin: 0 auto; }
+.input-group label { font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 8px; letter-spacing: 1px; }
+.full-width { width: 100%; justify-content: center; }
+.status-screen { padding: 120px 0; text-align: center; }
+.centered-card { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.success-icon { color: #48BB78; margin-bottom: 20px; }
+
+/* --- 5. СТИЛИ СТРАНИЦЫ SERVICE DETAIL (ИСПРАВЛЕННАЯ СЕТКА) --- */
+.detail-container { padding: 60px 0; }
+.back-link { 
+  display: flex; align-items: center; gap: 10px; text-decoration: none; 
+  color: var(--accent); font-weight: 700; font-size: 0.8rem; margin-bottom: 40px; letter-spacing: 1px; 
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 400px 1fr; /* Фото слева (400px), текст справа */
+  gap: 60px;
+  align-items: start;
+}
+
+.detail-image-placeholder {
+  background: #1A1D23;
+  border-radius: 8px;
+  height: 450px; /* Умеренная высота */
+  width: 100%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.detail-image-placeholder::after {
+  content: 'PHOTO_PREVIEW';
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  opacity: 0.5;
+}
+
+.detail-title { font-size: 3rem; font-weight: 900; margin: 0 0 20px 0; line-height: 1.1; }
+.detail-description { color: var(--text-secondary); font-size: 1.1rem; line-height: 1.7; margin-bottom: 40px; }
+.price-card { background: rgba(49, 130, 206, 0.1); padding: 25px; border-left: 4px solid var(--accent); margin-bottom: 30px; }
+.price-value { font-size: 2.2rem; font-weight: 900; }
+.features-list { list-style: none; padding: 0; margin-bottom: 30px; }
+.feature-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: #CBD5E0; }
+
+/* --- 6. СТИЛИ СТРАНИЦЫ PROFILE --- */
+.profile-section { padding: 60px 0; }
+.profile-layout { display: grid; grid-template-columns: 250px 1fr; gap: 50px; }
+.user-avatar { width: 80px; height: 80px; background: var(--accent); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; }
+.profile-nav { display: flex; flexDirection: column; gap: 8px; }
+.profile-nav-item { padding: 12px; color: var(--text-secondary); cursor: pointer; transition: 0.3s; }
+.profile-nav-item.active { background: rgba(255,255,255,0.05); color: white; border-radius: 4px; }
+.active-order { border-left: 4px solid var(--accent); display: flex; justify-content: space-between; align-items: center; }
+.order-badge { font-size: 0.7rem; color: var(--accent); font-weight: 900; display: block; margin-bottom: 8px; }
+
+/* --- 7. ВСПОМОГАТЕЛЬНЫЕ КЛАССЫ (HELPERS) --- */
+.animate-spin { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.status-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; color: white; min-height: 400px; }
+.error-text { color: #FC8181; }
+
+/* --- 8. АДАПТИВНОСТЬ --- */
+@media (max-width: 900px) {
+  .detail-grid, .profile-layout { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 3rem; }
+  .detail-image-placeholder { height: 300px; }
 }
