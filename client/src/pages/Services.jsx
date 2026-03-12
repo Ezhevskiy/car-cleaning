@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchServices } from '../api';
 
 const Services = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetchServices().then(res => {
-      setData(res);
-      setLoading(false);
-    });
+    fetch('http://localhost/car/api/index.php?action=get_services')
+      .then(res => res.json())
+      .then(data => setServices(data));
   }, []);
 
-  if (loading) return <div className="container" style={{padding: '60px 0'}}>Загрузка каталога...</div>;
-
   return (
-    <div className="container" style={{ padding: '60px 0' }}>
-      <h2 style={{ letterSpacing: '4px', fontSize: '0.9rem', color: 'var(--accent)', marginBottom: '20px' }}>КАТАЛОГ</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2px', background: 'var(--border)' }}>
-        {data.map(s => (
-          <div key={s.id} className="card-premium">
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '20px' }}>{s.title}</h3>
-            <div style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '30px' }}>{s.price} ₽</div>
-            <Link to={`/services/${s.id}`} style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.7rem', fontWeight: '900', letterSpacing: '1px' }}>
-              ДЕТАЛИ УСЛУГИ →
-            </Link>
+    <div className="container" style={{ padding: '40px 0' }}>
+      <h2 className="accent-text">НАШИ УСЛУГИ</h2>
+      <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+        {services.map(service => (
+          <div key={service.id} className="service-card" style={{ background: '#111', padding: '20px', border: '1px solid #222' }}>
+            <h3 style={{ color: '#fff' }}>{service.name}</h3>
+            <p style={{ color: '#888', fontSize: '0.9rem' }}>{service.description}</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '20px' }}>
+              <span style={{ color: 'var(--accent)', fontWeight: 'bold' }}>{service.price} ₽</span>
+              <Link to={`/services/${service.id}`} className="btn-primary" style={{ padding: '8px 15px', fontSize: '0.7rem' }}>ДЕТАЛИ</Link>
+            </div>
           </div>
         ))}
       </div>

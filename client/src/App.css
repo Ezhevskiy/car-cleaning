@@ -207,3 +207,215 @@ body {
   .hero-title { font-size: 3rem; }
   .detail-image-placeholder { height: 300px; }
 }
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.auth-container {
+  background: #111;
+  padding: 40px;
+  border: 1px solid #222;
+  border-radius: 4px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  background: #000;
+  border: 1px solid #333;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif; /* Или твой шрифт */
+  box-sizing: border-box;
+}
+
+.auth-input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.error-msg {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+  padding: 10px;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+/* Центрирование формы на странице */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 150px); /* Вычитаем высоту шапки и футера */
+  background-color: var(--bg-black);
+}
+
+/* Контейнер формы */
+.auth-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+/* Заголовок (ВХОД / РЕГИСТРАЦИЯ) */
+.accent-text {
+  color: var(--accent);
+  font-weight: 900;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+/* Поля ввода */
+.auth-input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #000;
+  border: 1px solid #222;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  box-sizing: border-box; /* Чтобы паддинги не раздували ширину */
+  transition: all 0.3s ease;
+}
+
+.auth-input:focus {
+  border-color: var(--accent);
+  outline: none;
+  background: #050505;
+}
+
+/* Кнопка */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 15px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 20px var(--accent);
+}
+
+/* Текст ошибки */
+.error-msg {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+  padding: 10px;
+  font-size: 0.75rem;
+  border-left: 3px solid #ff4444;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Ссылка переключения (Нет аккаунта?) */
+.auth-container p {
+  color: var(--text-gray);
+  transition: 0.3s;
+}
+
+.auth-container p:hover {
+  color: var(--accent);
+}
+
+.auth-input {
+    background-color: #000 !important; /* Принудительно черный */
+    color: #ffffff !important;         /* Принудительно белый */
+    -webkit-appearance: none;          /* Убираем системные стили iOS/Safari */
+    appearance: none;
+}
+
+/* 2. Самый важный блок: побеждаем автозаполнение Chrome/Edge */
+/* Мы используем внутреннюю тень (box-shadow), чтобы перекрыть системный белый цвет */
+.auth-input:-webkit-autofill,
+.auth-input:-webkit-autofill:hover, 
+.auth-input:-webkit-autofill:focus, 
+.auth-input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s; /* Фон не изменится 5000 секунд */
+    -webkit-text-fill-color: #ffffff !important;       /* Текст останется белым */
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset !important; /* Черная заливка внутри */
+}
+
+/* 3. Убираем синее свечение (outline) в некоторых браузерах */
+.auth-input:focus {
+    outline: none;
+    border-color: var(--accent) !important;
+    background-color: #000 !important;
+}
+
+/* 4. Исправляем цвет текста, который ты уже ввел */
+.auth-input:not(:placeholder-shown) {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.booking-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+/* Карточка статуса (Успех/Ошибка) */
+.status-card {
+    padding: 40px 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.status-card.success {
+    border: 1px solid #00ff88;
+    background: #0a1a12; /* Очень темный зеленый */
+}
+
+.status-card.error {
+    border: 1px solid #ff4444;
+    background: #1a0505; /* Очень темный красный */
+}
+
+/* Иконки */
+.status-icon {
+    margin-bottom: 20px;
+}
+
+/* Тексты */
+.status-title {
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.status-text {
+    color: #888;
+    margin-bottom: 30px;
+}
+
+/* Кнопка в карточке */
+.status-btn {
+    width: 100%;
+}
