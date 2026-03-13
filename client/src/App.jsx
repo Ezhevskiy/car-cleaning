@@ -79,7 +79,7 @@ function App() {
       </main>
 
       <footer className="container" style={{ padding: '60px 0', textAlign: 'center', opacity: 0.2, fontSize: '0.8rem' }}>
-        <p>© 2026 PREMIUM_CLEAN_DETAILING | РУБЛИ (₽)</p>
+        <p>© 2026 ПРЕМИУМ ДЕТЕЙЛИНГ</p>
       </footer>
     </BrowserRouter>
   );

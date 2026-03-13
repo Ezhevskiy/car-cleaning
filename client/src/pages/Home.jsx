@@ -7,7 +7,7 @@ const Home = () => {
     <div className="container home-section">
       <div className="home-content">
         <h1 className="hero-title">
-          PREMIUM <br/> <span className="accent-text">DETAILING</span>
+          ПРЕМИУМ <br/> <span className="accent-text">ДЕТЕЙЛИНГ</span>
         </h1>
         <p className="hero-description">
           Уникальный подход к уходу за вашим автомобилем. Мы объединили инновационные защитные составы и опыт, чтобы достичь совершенства.
